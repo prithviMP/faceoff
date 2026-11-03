@@ -1,0 +1,2 @@
+# Lightweight editable quickstart. Optional providers/models: see README.
+-e .

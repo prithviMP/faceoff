@@ -1,0 +1,1 @@
+Net refunds for a sale include full and partial refunds, minus reversed refunds. A text paragraph cannot establish the total; use the ledger.

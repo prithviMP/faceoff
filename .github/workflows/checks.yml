@@ -1,0 +1,27 @@
+name: Checks
+on: [push, pull_request]
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.12']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -e ".[dev,pdf]"
+      - run: python -m ruff check src tests
+      - run: python -m pytest -q
+      - run: python -m pip wheel --no-deps . -w dist
+      - name: Wheel smoke check
+        shell: bash
+        run: |
+          python -m venv smoke-env
+          if [ -f smoke-env/bin/python ]; then P=smoke-env/bin/python; else P=smoke-env/Scripts/python; fi
+          "$P" -m pip install dist/*.whl
+          "$P" -m faceoff_lab example policies smoke-project
+          "$P" -m faceoff_lab inspect smoke-project
+          "$P" -m faceoff_lab query smoke-project "damaged return policy"

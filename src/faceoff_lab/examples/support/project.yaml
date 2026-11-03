@@ -1,0 +1,17 @@
+name: support
+description: Small fictional support records; no handbook covers customer patterns.
+sources:
+- kind: csv
+  path: tickets.csv
+  id_column: ticket_id
+  text_columns:
+  - message
+  metadata_columns:
+  - language
+  - product
+rag:
+  chunk_size: 400
+  overlap: 40
+  top_k: 3
+  semantic: false
+okf_root: null

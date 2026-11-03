@@ -1,0 +1,17 @@
+name: iris
+description: Public UCI Iris dataset, transformed to searchable descriptions; CC BY
+  4.0, Fisher (1936).
+sources:
+- kind: csv
+  path: flowers.csv
+  id_column: id
+  text_columns:
+  - description
+  metadata_columns:
+  - species
+rag:
+  chunk_size: 400
+  overlap: 40
+  top_k: 3
+  semantic: false
+okf_root: null

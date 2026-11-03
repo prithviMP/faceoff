@@ -1,0 +1,12 @@
+name: policies
+description: Fictional MeraBazaar policies. Review actors and policies are synthetic
+  teaching data. No winner is guaranteed.
+sources:
+- kind: documents
+  path: documents
+rag:
+  chunk_size: 400
+  overlap: 40
+  top_k: 3
+  semantic: false
+okf_root: handbook

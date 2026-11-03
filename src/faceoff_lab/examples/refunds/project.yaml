@@ -1,0 +1,12 @@
+name: refunds
+description: Synthetic SQLite ledger and fictional reviewed recipe; no model writes
+  SQL.
+sources:
+- kind: documents
+  path: documents
+rag:
+  chunk_size: 400
+  overlap: 40
+  top_k: 3
+  semantic: false
+okf_root: handbook
